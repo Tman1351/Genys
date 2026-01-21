@@ -3,10 +3,10 @@
 #include "./defines.h"
 
 typedef struct platform_state {
-    void* interal_state;
+    void* internal_state;
 } platform_state;
 
-b8 platform_startup( 
+GAPI b8 platform_startup( 
     platform_state* plat_state,
     const char* application_name,
     i32 x,
@@ -14,9 +14,9 @@ b8 platform_startup(
     i32 width,
     i32 height);
 
-void platform_shutdown(platform_state* plat_state);
+GAPI void platform_shutdown(platform_state* plat_state);
 
-b8 platform_pump_messages(platform_state* plat_state);
+GAPI b8 platform_pump_messages(platform_state* plat_state);
 
 void* platform_allocate(u64 size, b8 aligned); // equvivelent to malloc()
 void platform_free(void* block, b8 aligned);

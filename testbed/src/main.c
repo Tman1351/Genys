@@ -1,5 +1,8 @@
-#include "../../engine/src/core/logger.h"
-#include "../../engine/src/core/asserts.h"
+#include <core/logger.h>
+#include <core/asserts.h>
+
+// TODO: Test
+#include <platform/platform.h>
 
 
 int main(void){
@@ -11,8 +14,15 @@ int main(void){
     GDEBUG("A test message: %f", 4.32f);
     GTRACE("A test message: %f", 4.32f);
 
-    GASSERT(1 == 0);
-
+    platform_state state;
+    if(platform_startup(&state, "Genys Engine Test", 100, 100, 1280, 720)) {
+        while (TRUE)
+        {
+            platform_pump_messages(&state);
+        }
+        
+    }
+    platform_shutdown(&state);
 
     return 0;
 }
